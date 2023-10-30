@@ -1,0 +1,13 @@
+//
+// Created by rolek on 30.10.2023.
+//
+
+#ifndef PROJEKTPROGRAMOWANIE_WSTI_PERSON_H
+#define PROJEKTPROGRAMOWANIE_WSTI_PERSON_H
+
+class Person {
+
+};
+
+
+#endif //PROJEKTPROGRAMOWANIE_WSTI_PERSON_H

@@ -1,0 +1,17 @@
+//
+// Created by rolek on 30.10.2023.
+//
+
+#ifndef PROJEKTPROGRAMOWANIE_WSTI_COMPANYMANAGEMENTPROGRAM_H
+#define PROJEKTPROGRAMOWANIE_WSTI_COMPANYMANAGEMENTPROGRAM_H
+
+#include <iostream>
+#include <fstream>
+
+class CompanyManagementProgram {
+
+};
+
+
+#endif //PROJEKTPROGRAMOWANIE_WSTI_COMPANYMANAGEMENTPROGRAM_H
+
