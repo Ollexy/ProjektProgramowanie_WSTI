@@ -8,7 +8,13 @@
 #include "Person.h"
 
 class Client : public Person {
+private:
+    int id;
+    std::string email;
 
+public:
+    Client(std::string fName, std::string lName, int xAge, int xId, std::string xEmail);
+    void displayInfo() const override;
 };
 
 
