@@ -21,4 +21,6 @@ add_executable(ProjektProgramowanie_WSTI main.cpp
         MarketingDepartment.cpp
         MarketingDepartment.h
         CompanyManagementProgram.cpp
-        CompanyManagementProgram.h)
+        CompanyManagementProgram.h
+        Bin.cpp
+        Bin.h)
