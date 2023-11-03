@@ -6,6 +6,8 @@
 #define PROJEKTPROGRAMOWANIE_WSTI_CLIENT_H
 
 #include "Person.h"
+#include <iostream>
+
 
 class Client : public Person {
 private:
