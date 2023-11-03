@@ -3,3 +3,7 @@
 //
 
 #include "ITDepartment.h"
+
+std::string ITDepartment::getName() const {
+    return "IT";
+}

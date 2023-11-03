@@ -8,7 +8,9 @@
 #include "Department.h"
 
 class HRDepartment : public Department {
-
+public:
+    HRDepartment(std::string localization, std::string manager);
+    std::string getName() const override;
 };
 
 

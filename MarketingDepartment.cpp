@@ -3,3 +3,7 @@
 //
 
 #include "MarketingDepartment.h"
+
+std::string MarketingDepartment::getName() const {
+    return "Marketing";
+}

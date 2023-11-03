@@ -8,6 +8,9 @@
 #include "Department.h"
 
 class FinanceDepartment : Department {
+public:
+    FinanceDepartment(std::string localization, std::string manager);
+    std::string getName() const override;
 
 };
 

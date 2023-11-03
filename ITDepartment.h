@@ -9,7 +9,9 @@
 
 
 class ITDepartment : public Department {
-
+public:
+    ITDepartment(std::string localization, std::string manager);
+    std::string getName() const override;
 };
 
 

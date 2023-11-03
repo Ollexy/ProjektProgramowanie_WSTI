@@ -3,3 +3,7 @@
 //
 
 #include "FinanceDepartment.h"
+
+std::string FinanceDepartment::getName() const {
+    return "Finance";
+}
