@@ -7,6 +7,9 @@
 
 #include "Employee.h"
 #include <vector>
+#include <string>
+
+class Employee;
 
 class Department {
 protected:
@@ -23,7 +26,7 @@ public:
 
     void displayDetails() const;
     void budgetUpdate(double newBudget);
-    //void addEmployee(Employee* newEmployee);
+    void addEmployee(Employee* newEmployee);
 };
 
 

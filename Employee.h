@@ -5,17 +5,21 @@
 #ifndef PROJEKTPROGRAMOWANIE_WSTI_EMPLOYEE_H
 #define PROJEKTPROGRAMOWANIE_WSTI_EMPLOYEE_H
 
-#include "Person.h"
 #include "Department.h"
+#include "Person.h"
+#include <string>
+#include <iostream>
+
+class Department;
 
 class Employee : public Person {
 private:
     std::string position;
     double salary;
-    //Department* department;
+    Department* department;
 
 public:
-    //Employee(std::string fName, std::string lName, int xAge, std::string xPosisiton, double xSalary, Department* xDepartment);
+    Employee(std::string firstName, std::string lastName, int age, std::string posisiton, double salary, Department* department);
 
     void displayInfo() const override;
 };
