@@ -23,4 +23,6 @@ add_executable(ProjektProgramowanie_WSTI main.cpp
         CompanyManagementProgram.cpp
         CompanyManagementProgram.h
         Bin.cpp
-        Bin.h)
+        Bin.h
+        FileManager.cpp
+        FileManager.h)
