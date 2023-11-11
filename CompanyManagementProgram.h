@@ -14,6 +14,10 @@
 #include "FileManager.h"
 #include <iostream>
 #include <fstream>
+#include <unordered_map>
+#include <conio.h>
+#include <cstdlib>
+#include <windows.h>
 
 class CompanyManagementProgram {
 private:
@@ -21,13 +25,19 @@ private:
     std::vector<Client> clients;
     Bin bin;
     FileManager fileManager;
+    std::unordered_map<std::string,std::string> users{{"admin","admin"}, {"user", "user"}};
+    bool isLoggedIn = false;
+
+    void displayLoginScreen();
+    bool login(const std::string& username, const std::string& password);
+    void clearInputBuffer();
 
 public:
     CompanyManagementProgram();
 
     void run();
-    void displayLoginScreen();
-    int mainMenu();
+    char getKeyPress(bool maskInput);
+    void mainMenu();
 
     void employeesMenu();
     void addEmployee();
