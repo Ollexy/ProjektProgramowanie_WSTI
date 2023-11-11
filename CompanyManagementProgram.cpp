@@ -63,7 +63,7 @@ void CompanyManagementProgram::mainMenu() {
     char choice;
 
     do {
-        std::cout << "----  MAIN MENU  ----" << std::endl;
+        std::cout << "----  MAIN MENU  ----" << std::endl << std::endl;
         std::cout << "1. Employee Menu" << std::endl;
         std::cout << "2. Client Menu" << std::endl;
         std::cout << "3. EXIT" << std::endl << std::endl;
@@ -88,11 +88,63 @@ void CompanyManagementProgram::mainMenu() {
 }
 
 void CompanyManagementProgram::employeesMenu() {
+    char choice;
 
+    do{
+        std::cout << "----  EMPLOYEE MENU  ----" << std::endl << std::endl;
+        std::cout << "1. Display employee" << std::endl;
+        std::cout << "2. Add employee" << std::endl;
+        std::cout << "3. Remove employee" << std::endl;
+        std::cout << "4. Back to Main Menu" << std::endl;
+
+        std::cin >> choice;
+        switch (choice) {
+            case '1':
+                // TODO
+                break;
+            case '2':
+                // TODO
+                break;
+            case '3':
+                // TODO
+                break;
+            case '4':
+                mainMenu();
+                break;
+            default:
+                std::cout << "Invalid choice. Please try again." << std::endl;
+        }
+    }while(choice != '1' && choice != '2' && choice != '3');
 }
 
 void CompanyManagementProgram::clientsMenu() {
-    mainMenu();
+    char choice;
+
+    do {
+        std::cout << "----  CLIENT MENU  ----" << std::endl;
+        std::cout << "1. Display Clients" << std::endl;
+        std::cout << "2. Add Client" << std::endl;
+        std::cout << "3. Remove Client" << std::endl;
+        std::cout << "4. Back to Main Menu" << std::endl;
+
+        std::cin >> choice;
+        switch (choice) {
+            case '1':
+                // TODO
+                break;
+            case '2':
+                // TODO
+                break;
+            case '3':
+                // TODO
+                break;
+            case '4':
+                mainMenu();
+                break;
+            default:
+                std::cout << "Invalid choice. Please try again." << std::endl;
+        }
+    }while(choice != '1' && choice != '2' && choice != '3');
 }
 
 
