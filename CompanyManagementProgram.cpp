@@ -15,17 +15,17 @@ void CompanyManagementProgram::displayLoginScreen() {
 
     std::cout << "            username:";
     std::cin >> username;
-    std::cout << "            password:";
 
-    char ch;
-    while ((ch = getKeyPress(true)) != 13) {
-        password.push_back(ch);
-    }
-    std::cout << std::endl <<std::endl;
+    std::cout << "            password:";
+    std::cin >> password;
+
+    std::cout << std::endl;
 
     if(login(username, password)){
-        std::cout << "Login succesfull!";
+        std::cout << "      Login succesfull!\n";
         isLoggedIn = true;
+        Sleep(2000);
+        system("CLS");
     }
 }
 
@@ -39,12 +39,8 @@ bool CompanyManagementProgram::login(const std::string &username, const std::str
     return false;
 }
 
-char CompanyManagementProgram::getKeyPress(bool maskInput) {
-    char ch = _getch();
-    if (maskInput) {
-
-    }
-        return ch;
+char CompanyManagementProgram::getKeyPress() {
+    return 'a';
 }
 
 void CompanyManagementProgram::clearInputBuffer() {
@@ -53,14 +49,14 @@ void CompanyManagementProgram::clearInputBuffer() {
 }
 
 void CompanyManagementProgram::run() {
-    mainMenu();
-//    while (true) {
-//        if (!isLoggedIn) {
-//            displayLoginScreen();
-//        } else {
-//            mainMenu();
-//        }
-//    }
+    //mainMenu();
+    while (true) {
+        if (!isLoggedIn) {
+            displayLoginScreen();
+        } else {
+            mainMenu();
+        }
+    }
 }
 
 void CompanyManagementProgram::mainMenu() {
@@ -72,9 +68,7 @@ void CompanyManagementProgram::mainMenu() {
         std::cout << "2. Client Menu" << std::endl;
         std::cout << "3. EXIT" << std::endl << std::endl;
 
-        std::cout << "Enter your choice: ";
-        choice = getKeyPress(choice);
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin >> choice;
 
         switch (choice) {
             case '1':

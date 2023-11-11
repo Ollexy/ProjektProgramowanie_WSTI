@@ -30,13 +30,14 @@ private:
 
     void displayLoginScreen();
     bool login(const std::string& username, const std::string& password);
+    char getKeyPress();
     void clearInputBuffer();
 
 public:
     CompanyManagementProgram();
 
     void run();
-    char getKeyPress(bool maskInput);
+
     void mainMenu();
 
     void employeesMenu();
