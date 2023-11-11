@@ -25,18 +25,18 @@ private:
 public:
     CompanyManagementProgram();
 
-    void start();
-    void mainMenu();
-    void secondaryMenu();
-    void displayMenu();
+    void run();
     void displayLoginScreen();
+    int mainMenu();
 
+    void employeesMenu();
     void addEmployee();
     void removeEmployee();
     void updateEmployeeDetails();
     void displayEmloyees();
     void sortEmployees();
 
+    void clientsMenu();
     void addClient();
     void removeClient();
     void updateClientDetails();

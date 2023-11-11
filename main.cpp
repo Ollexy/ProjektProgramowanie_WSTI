@@ -1,6 +1,8 @@
-#include <iostream>
+#include "CompanyManagementProgram.h"
 
 int main() {
-    std::cout << "Tu zaczyna sie program. Powodzenia!!!!" << std::endl;
+    CompanyManagementProgram program;
+    program.run();
+
     return 0;
 }
