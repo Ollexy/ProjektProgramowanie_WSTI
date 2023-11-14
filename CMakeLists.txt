@@ -12,10 +12,6 @@ add_executable(ProjektProgramowanie_WSTI main.cpp
         Client.h
         Department.cpp
         Department.h
-        ITDepartment.cpp
-        ITDepartment.h
-        HRDepartment.cpp
-        HRDepartment.h
         FinanceDepartment.cpp
         FinanceDepartment.h
         MarketingDepartment.cpp
@@ -25,4 +21,6 @@ add_executable(ProjektProgramowanie_WSTI main.cpp
         Bin.cpp
         Bin.h
         FileManager.cpp
-        FileManager.h)
+        FileManager.h
+        EmployeeManager.cpp
+        EmployeeManager.h)

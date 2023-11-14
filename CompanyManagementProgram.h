@@ -5,13 +5,12 @@
 #include "Employee.h"
 #include "Client.h"
 #include "Department.h"
-#include "ITDepartment.h"
-#include "HRDepartment.h"
 #include "MarketingDepartment.h"
 #include "FinanceDepartment.h"
 #include "Bin.h"
 #include "CompanyManagementProgram.h"
 #include "FileManager.h"
+#include "EmployeeManager.h"
 #include <iostream>
 #include <fstream>
 #include <unordered_map>
@@ -37,7 +36,6 @@ public:
     CompanyManagementProgram();
 
     void run();
-
     void mainMenu();
 
     void employeesMenu();
