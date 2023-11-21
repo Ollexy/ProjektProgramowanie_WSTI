@@ -5,9 +5,10 @@
 #ifndef PROJEKTPROGRAMOWANIE_WSTI_EMPLOYEE_H
 #define PROJEKTPROGRAMOWANIE_WSTI_EMPLOYEE_H
 
-#include "Person.h"
 #include <string>
 #include <iostream>
+#include "Person.h"
+
 
 class Employee : public Person {
 private:
@@ -17,17 +18,19 @@ private:
 public:
     Employee(std::string firstName, std::string lastName, int age, std::string position, double salary);
 
+    //setters
     std::string getFirstName() const { return firstName; }
     std::string getLastName() const { return lastName; }
-    int getAge() const { return age; }
     std::string getPosition() const { return position; }
     double getSalary() const { return salary; }
+    int getAge() const { return age; }
 
+    //getters
     void setFirstName(const std::string& fName) { firstName = fName; }
     void setLastName(const std::string& lName) { lastName = lName; }
-    void setAge(int xAge) { age = xAge; }
     void setPosition(const std::string& xPosition) { position = xPosition; }
     void setSalary(double xSalary) { salary = xSalary; }
+    void setAge(int xAge) { age = xAge; }
 
     void displayInfo() const override;
 };

@@ -5,14 +5,14 @@
 #ifndef PROJEKTPROGRAMOWANIE_WSTI_FILEMANAGER_H
 #define PROJEKTPROGRAMOWANIE_WSTI_FILEMANAGER_H
 
-#include "Employee.h"
-#include "Client.h"
-#include "Bin.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
 #include <string>
+#include "Employee.h"
+#include "Client.h"
+#include "Bin.h"
 
 class FileManager {
 public:

@@ -5,9 +5,8 @@
 #ifndef PROJEKTPROGRAMOWANIE_WSTI_CLIENT_H
 #define PROJEKTPROGRAMOWANIE_WSTI_CLIENT_H
 
-#include "Person.h"
 #include <iostream>
-
+#include "Person.h"
 
 class Client : public Person {
 private:
@@ -16,6 +15,7 @@ private:
 
 public:
     Client(std::string fName, std::string lName, int xAge, int xId, std::string xEmail);
+
     void displayInfo() const override;
 };
 

@@ -1,6 +1,12 @@
 #ifndef PROJEKTPROGRAMOWANIE_WSTI_COMPANYMANAGEMENTPROGRAM_H
 #define PROJEKTPROGRAMOWANIE_WSTI_COMPANYMANAGEMENTPROGRAM_H
 
+#include <iostream>
+#include <fstream>
+#include <unordered_map>
+#include <conio.h>
+#include <cstdlib>
+#include <windows.h>
 #include "Person.h"
 #include "Employee.h"
 #include "Client.h"
@@ -8,12 +14,7 @@
 #include "CompanyManagementProgram.h"
 #include "FileManager.h"
 #include "EmployeeManager.h"
-#include <iostream>
-#include <fstream>
-#include <unordered_map>
-#include <conio.h>
-#include <cstdlib>
-#include <windows.h>
+
 
 class EmployeeManager;
 

@@ -50,6 +50,8 @@ void CompanyManagementProgram::run() {
             displayLoginScreen();
         } else {
             employees = fileManager.loadEmployeesFromFile("employees.txt");
+
+            std::cout << "ROZMIAR WEKTORA PRACOWNIKOW: " << employeeManager.getEmployees().size() <<std::endl;
             mainMenu();
         }
     }

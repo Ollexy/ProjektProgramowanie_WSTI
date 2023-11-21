@@ -16,6 +16,7 @@ protected:
 public:
     Person(std::string firstName, std::string lastName, int age);
     virtual ~Person() = default;
+
     virtual void displayInfo() const = 0;
 
 };
