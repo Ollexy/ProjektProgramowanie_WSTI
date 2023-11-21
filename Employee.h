@@ -15,7 +15,7 @@ private:
     double salary;
 
 public:
-    Employee(std::string firstName, std::string lastName, int age, std::string posisiton, double salary);
+    Employee(std::string firstName, std::string lastName, int age, std::string position, double salary);
 
     std::string getFirstName() const { return firstName; }
     std::string getLastName() const { return lastName; }

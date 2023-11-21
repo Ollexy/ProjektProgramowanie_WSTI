@@ -49,6 +49,7 @@ void CompanyManagementProgram::run() {
         if (!isLoggedIn) {
             displayLoginScreen();
         } else {
+            employees = fileManager.loadEmployeesFromFile("employees.txt");
             mainMenu();
         }
     }

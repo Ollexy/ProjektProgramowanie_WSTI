@@ -9,7 +9,7 @@ FileManager::FileManager() {
 }
 
 void FileManager::saveEmployeesToFile(const std::vector<Employee *> &employees, const std::string &filename) {
-    std::ofstream file(filename);
+    std::ofstream file(filename, std::ios::app);  // Zmiana trybu otwarcia na std::ios::app
 
     if (file.is_open()) {
         for (const auto& employee : employees) {
@@ -80,4 +80,5 @@ void FileManager::ensureFileExists(const std::string &filename) {
             std::cerr << "Unable to create file: " << filename << std::endl;
         }
     }
+    else{std::cout << "File succesfully loaded!\n\n";}
 }

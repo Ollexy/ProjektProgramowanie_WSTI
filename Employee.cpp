@@ -4,7 +4,7 @@
 
 #include "Employee.h"
 
-Employee::Employee(std::string firstName, std::string lastName, int age, std::string posisiton, double salary)
+Employee::Employee(std::string firstName, std::string lastName, int age, std::string position, double salary)
                     :Person(firstName, lastName, age), position(position), salary(salary){}
 
 void Employee::displayInfo() const {
