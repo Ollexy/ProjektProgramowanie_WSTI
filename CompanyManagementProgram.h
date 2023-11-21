@@ -4,9 +4,6 @@
 #include "Person.h"
 #include "Employee.h"
 #include "Client.h"
-#include "Department.h"
-#include "MarketingDepartment.h"
-#include "FinanceDepartment.h"
 #include "Bin.h"
 #include "CompanyManagementProgram.h"
 #include "FileManager.h"
@@ -18,9 +15,12 @@
 #include <cstdlib>
 #include <windows.h>
 
+class EmployeeManager;
+
 class CompanyManagementProgram {
 private:
-    std::vector<Employee> employees;
+    EmployeeManager employeeManager;
+    std::vector<Employee*> employees;
     std::vector<Client> clients;
     Bin bin;
     FileManager fileManager;
@@ -29,11 +29,10 @@ private:
 
     void displayLoginScreen();
     bool login(const std::string& username, const std::string& password);
-    char getKeyPress();
-    void clearInputBuffer();
 
 public:
     CompanyManagementProgram();
+    CompanyManagementProgram(std::vector<Employee*>& employees);
 
     void run();
     void mainMenu();
@@ -42,7 +41,8 @@ public:
     void addEmployee();
     void removeEmployee();
     void updateEmployeeDetails();
-    void displayEmloyees();
+    void displayEmployees();
+    void displayEmployeeDetails(const Employee* employee);
     void sortEmployees();
 
     void clientsMenu();
@@ -53,7 +53,6 @@ public:
     void sortClients();
 
     void saveData();
-    void loadData();
 };
 
 

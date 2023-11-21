@@ -17,7 +17,8 @@ public:
     EmployeeManager() = default;
     ~EmployeeManager();     //free space after removing employee
 
-    void addEmployee(const std::string& fName, const std::string& lName, int age, const std::string& position, double salary, Department* department);
+    std::vector<Employee*> getEmployees();
+    void addEmployee(const std::string& fName, const std::string& lName, int age, const std::string& position, double salary);
     void removeEmployee(Employee* emp);
     void updateEmployee(Employee* emp, const std::string& field, const std::string& value);
 };

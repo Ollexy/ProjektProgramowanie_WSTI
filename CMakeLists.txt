@@ -10,12 +10,6 @@ add_executable(ProjektProgramowanie_WSTI main.cpp
         Employee.h
         Client.cpp
         Client.h
-        Department.cpp
-        Department.h
-        FinanceDepartment.cpp
-        FinanceDepartment.h
-        MarketingDepartment.cpp
-        MarketingDepartment.h
         CompanyManagementProgram.cpp
         CompanyManagementProgram.h
         Bin.cpp

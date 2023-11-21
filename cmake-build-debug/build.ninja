@@ -73,24 +73,6 @@ build CMakeFiles/ProjektProgramowanie_WSTI.dir/Client.cpp.obj: CXX_COMPILER__Pro
   OBJECT_DIR = CMakeFiles\ProjektProgramowanie_WSTI.dir
   OBJECT_FILE_DIR = CMakeFiles\ProjektProgramowanie_WSTI.dir
 
-build CMakeFiles/ProjektProgramowanie_WSTI.dir/Department.cpp.obj: CXX_COMPILER__ProjektProgramowanie_WSTI_unscanned_Debug C$:/Users/rolek/CLionProjects/ProjektProgramowanie_WSTI/Department.cpp || cmake_object_order_depends_target_ProjektProgramowanie_WSTI
-  DEP_FILE = CMakeFiles\ProjektProgramowanie_WSTI.dir\Department.cpp.obj.d
-  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\ProjektProgramowanie_WSTI.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjektProgramowanie_WSTI.dir
-
-build CMakeFiles/ProjektProgramowanie_WSTI.dir/FinanceDepartment.cpp.obj: CXX_COMPILER__ProjektProgramowanie_WSTI_unscanned_Debug C$:/Users/rolek/CLionProjects/ProjektProgramowanie_WSTI/FinanceDepartment.cpp || cmake_object_order_depends_target_ProjektProgramowanie_WSTI
-  DEP_FILE = CMakeFiles\ProjektProgramowanie_WSTI.dir\FinanceDepartment.cpp.obj.d
-  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\ProjektProgramowanie_WSTI.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjektProgramowanie_WSTI.dir
-
-build CMakeFiles/ProjektProgramowanie_WSTI.dir/MarketingDepartment.cpp.obj: CXX_COMPILER__ProjektProgramowanie_WSTI_unscanned_Debug C$:/Users/rolek/CLionProjects/ProjektProgramowanie_WSTI/MarketingDepartment.cpp || cmake_object_order_depends_target_ProjektProgramowanie_WSTI
-  DEP_FILE = CMakeFiles\ProjektProgramowanie_WSTI.dir\MarketingDepartment.cpp.obj.d
-  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\ProjektProgramowanie_WSTI.dir
-  OBJECT_FILE_DIR = CMakeFiles\ProjektProgramowanie_WSTI.dir
-
 build CMakeFiles/ProjektProgramowanie_WSTI.dir/CompanyManagementProgram.cpp.obj: CXX_COMPILER__ProjektProgramowanie_WSTI_unscanned_Debug C$:/Users/rolek/CLionProjects/ProjektProgramowanie_WSTI/CompanyManagementProgram.cpp || cmake_object_order_depends_target_ProjektProgramowanie_WSTI
   DEP_FILE = CMakeFiles\ProjektProgramowanie_WSTI.dir\CompanyManagementProgram.cpp.obj.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
@@ -123,7 +105,7 @@ build CMakeFiles/ProjektProgramowanie_WSTI.dir/EmployeeManager.cpp.obj: CXX_COMP
 #############################################
 # Link the executable ProjektProgramowanie_WSTI.exe
 
-build ProjektProgramowanie_WSTI.exe: CXX_EXECUTABLE_LINKER__ProjektProgramowanie_WSTI_Debug CMakeFiles/ProjektProgramowanie_WSTI.dir/main.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/Person.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/Employee.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/Client.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/Department.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/FinanceDepartment.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/MarketingDepartment.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/CompanyManagementProgram.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/Bin.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/FileManager.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/EmployeeManager.cpp.obj
+build ProjektProgramowanie_WSTI.exe: CXX_EXECUTABLE_LINKER__ProjektProgramowanie_WSTI_Debug CMakeFiles/ProjektProgramowanie_WSTI.dir/main.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/Person.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/Employee.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/Client.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/CompanyManagementProgram.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/Bin.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/FileManager.cpp.obj CMakeFiles/ProjektProgramowanie_WSTI.dir/EmployeeManager.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ProjektProgramowanie_WSTI.dir

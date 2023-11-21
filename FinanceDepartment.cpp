@@ -1,9 +1,0 @@
-//
-// Created by rolek on 30.10.2023.
-//
-
-#include "FinanceDepartment.h"
-
-std::string FinanceDepartment::getName() const {
-    return "Finance";
-}

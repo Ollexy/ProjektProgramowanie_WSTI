@@ -9,11 +9,18 @@
 #include "Client.h"
 #include "Bin.h"
 #include <iostream>
-#include <string>
 #include <fstream>
+#include <sstream>
+#include <vector>
+#include <string>
 
 class FileManager {
+public:
+    FileManager();
 
+    void ensureFileExists(const std::string& filename);
+    void saveEmployeesToFile(const std::vector<Employee*>& employees, const std::string& filename);
+    std::vector<Employee*> loadEmployeesFromFile(const std::string& filename);
 };
 
 
