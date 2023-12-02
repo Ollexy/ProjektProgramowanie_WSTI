@@ -4,35 +4,16 @@
 
 #include "FileManager.h"
 
-FileManager::FileManager() {
-
-}
-
-void FileManager::saveEmployeesToFile(const std::vector<Employee *> &employees, const std::string &filename) {
-    std::ofstream file(filename, std::ios::app);  // Zmiana trybu otwarcia na std::ios::app
-
-    if (file.is_open()) {
-        for (const auto& employee : employees) {
-            file << employee->getFirstName() << ","
-                 << employee->getLastName() << ","
-                 << employee->getPosition() << ","
-                 << employee->getAge() << ","
-                 << employee->getSalary() << "\n";
-        }
-
-        file.close();
-        std::cout << "Employee data saved to file: " << filename << std::endl;
-    } else {
-        std::cerr << "Unable to open file for writing: " << filename << std::endl;
-    }
-}
+FileManager::FileManager() {}
 
 std::vector<Employee *> FileManager::loadEmployeesFromFile(const std::string &filename) {
-    std::vector<Employee*> loadedEmployees;
+    std::vector<Employee *> loadedEmployees;
     std::ifstream file(filename);
     std::string line;
 
     if (file.is_open()) {
+        file.seekg(0, std::ios::beg); //cofanie kursora na początek pliku
+
         while (std::getline(file, line)) {
             std::istringstream iss(line);
             std::string fName, lName, position, ageStr, salaryStr;
@@ -48,12 +29,10 @@ std::vector<Employee *> FileManager::loadEmployeesFromFile(const std::string &fi
                     int age = std::stoi(ageStr);
                     double salary = std::stod(salaryStr);
 
-                    // Utwórz pracownika i dodaj go do wektora
+                    // make employee and add it to vector
                     loadedEmployees.push_back(new Employee(fName, lName, age, position, salary));
 
-                    // Dodaj ten komunikat
-                    std::cout << "Loaded employee: " << fName << " " << lName << ", Position: " << position << std::endl;
-                } catch (const std::exception& e) {
+                } catch (const std::exception &e) {
                     std::cerr << "Error converting string to number: " << e.what() << std::endl;
                     continue;
                 }
@@ -63,7 +42,6 @@ std::vector<Employee *> FileManager::loadEmployeesFromFile(const std::string &fi
         }
 
         file.close();
-        std::cout << "Employee data loaded from file: " << filename << std::endl;
     } else {
         std::cerr << "Unable to open file for reading: " << filename << std::endl;
     }
@@ -73,12 +51,27 @@ std::vector<Employee *> FileManager::loadEmployeesFromFile(const std::string &fi
 
 void FileManager::ensureFileExists(const std::string &filename) {
     std::ifstream file(filename);
+
     if (!file.is_open()) {
-        // Plik nie istnieje, tworzymy pusty plik
         std::ofstream createFile(filename);
         if (!createFile.is_open()) {
             std::cerr << "Unable to create file: " << filename << std::endl;
         }
     }
-    else{std::cout << "File succesfully loaded!\n\n";}
+}
+
+void FileManager::saveEmployeeToFile(const Employee *employee, const std::string &filename) {
+    std::ofstream file(filename, std::ios::app);  // otwieranie pliku w trybie append (dopisywania na koniec pliku)
+
+    if (file.is_open()) {
+        file << employee->getFirstName() << ","
+             << employee->getLastName() << ","
+             << employee->getPosition() << ","
+             << employee->getAge() << ","
+             << employee->getSalary() << "\n";
+
+        file.close();
+    } else {
+        std::cerr << "Unable to open file for writing: " << filename << std::endl;
+    }
 }
