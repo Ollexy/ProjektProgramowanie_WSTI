@@ -51,6 +51,7 @@ public:
     void removeClient();
     void updateClientDetails();
     void displayClients();
+    void displayClientsDetails();
     void sortClients();
 
     void saveData();

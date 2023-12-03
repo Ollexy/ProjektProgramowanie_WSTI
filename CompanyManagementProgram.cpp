@@ -98,6 +98,7 @@ void CompanyManagementProgram::employeesMenu() {
         std::cout << "2. Add employee" << std::endl;
         std::cout << "3. Remove employee" << std::endl;
         std::cout << "4. Update employee information" << std::endl;
+        std::cout << "5. Sort employees" << std::endl;
         std::cout << "0. Back to Main Menu" << std::endl;
 
         std::cin >> choice;
@@ -114,13 +115,16 @@ void CompanyManagementProgram::employeesMenu() {
             case '4':
                 updateEmployeeDetails();
                 break;
+            case '5':
+                sortEmployees();
+                break;
             case '0':
                 mainMenu();
                 break;
             default:
                 std::cout << "Invalid choice. Please try again." << std::endl;
         }
-    }while(choice != '1' && choice != '2' && choice != '3' && choice != '4');
+    }while(choice != '1' && choice != '2' && choice != '3' && choice != '4' && choice != '5');
 }
 
 void CompanyManagementProgram::clientsMenu() {
@@ -299,6 +303,35 @@ void CompanyManagementProgram::saveData() {
     }
 
     std::cout << "Employee data saved successfully." << std::endl;
+}
+
+void CompanyManagementProgram::sortEmployees() {
+    char choice;
+
+    do {
+        std::cout << "----  SORT EMPLOYEES MENU  ----" << std::endl << std::endl;
+        std::cout << "1. Sort Alphabetically" << std::endl;
+        std::cout << "2. Sort Reverse Alphabetically" << std::endl;
+        std::cout << "0. Back to Employee Menu" << std::endl;
+
+        std::cin >> choice;
+
+        switch (choice) {
+            case '1':
+                employeeManager.sortAscending();
+                std::cout << "Employees sorted alphabetically." << std::endl;
+                break;
+            case '2':
+                employeeManager.sortDescending();
+                std::cout << "Employees sorted in reverse alphabetical order." << std::endl;
+                break;
+            case '0':
+                employeesMenu();
+                break;
+            default:
+                std::cout << "Invalid choice. Please try again." << std::endl;
+        }
+    } while (choice != '1' && choice != '2' && choice != '0');
 }
 
 

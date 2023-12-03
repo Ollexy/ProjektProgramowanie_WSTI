@@ -77,3 +77,13 @@ const std::vector<Employee *> &EmployeeManager::getEmployees() const {
 void EmployeeManager::addEmployeesFromFile(const std::vector<Employee *> &employees) {
     employeesList = employees;
 }
+
+void EmployeeManager::sortAscending() {
+    std::sort(employeesList.begin(), employeesList.end(), [](const Employee* a, const Employee* b) {
+        return a->getLastName() < b->getLastName();});
+}
+
+void EmployeeManager::sortDescending() {
+    std::sort(employeesList.begin(), employeesList.end(), [](const Employee* a, const Employee* b) {
+        return a->getLastName() > b->getLastName();});
+}

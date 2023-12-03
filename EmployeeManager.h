@@ -25,6 +25,11 @@ public:
     void updateEmployee(const Employee* emp, int fieldChoice, const std::string& newValue);
     const std::vector<Employee *> &getEmployees() const;
     void addEmployeesFromFile(const std::vector<Employee *> &employees);
+
+    void sortAscending();
+    void sortDescending();
+
+
 };
 
 
