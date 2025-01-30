@@ -1,15 +1,46 @@
-//
-// Created by rolek on 30.10.2023.
-//
-
 #include "Employee.h"
 
-Employee::Employee(std::string firstName, std::string lastName, int age, std::string position, double salary)
-                    :Person(firstName, lastName, age), position(position), salary(salary){}
+Employee::Employee(const std::string &fName, const std::string &lName, int age, const std::string &position, double salary)
+        : firstName(fName), lastName(lName), age(age), position(position), salary(salary) {}
 
-void Employee::displayInfo() const {
-    std::cout << "Employee: " << firstName << " " << lastName << std:: endl;
-    std::cout << "Age: " << age << std::endl;
-    std::cout << "Position: " << position << std::endl;
-    std::cout << "Salary: " << salary << std::endl << std::endl << std::endl;
+const std::string& Employee::getFirstName() const {
+    return firstName;
 }
+
+const std::string& Employee::getLastName() const {
+    return lastName;
+}
+
+int Employee::getAge() const {
+    return age;
+}
+
+const std::string& Employee::getPosition() const {
+    return position;
+}
+
+double Employee::getSalary() const {
+    return salary;
+}
+
+void Employee::setFirstName(const std::string& fName) {
+    firstName = fName;
+}
+
+void Employee::setLastName(const std::string& lName) {
+    lastName = lName;
+}
+
+void Employee::setAge(int age) {
+    this->age = age;
+}
+
+void Employee::setPosition(const std::string& position) {
+    this->position = position;
+}
+
+void Employee::setSalary(double salary) {
+    this->salary = salary;
+}
+
+

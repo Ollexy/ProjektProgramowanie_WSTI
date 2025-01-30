@@ -1,62 +1,34 @@
 #ifndef PROJEKTPROGRAMOWANIE_WSTI_COMPANYMANAGEMENTPROGRAM_H
 #define PROJEKTPROGRAMOWANIE_WSTI_COMPANYMANAGEMENTPROGRAM_H
 
-#include <iostream>
-#include <fstream>
-#include <unordered_map>
-#include <conio.h>
-#include <cstdlib>
-#include <windows.h>
-#include "Person.h"
 #include "Employee.h"
 #include "Client.h"
-#include "Bin.h"
-#include "CompanyManagementProgram.h"
-#include "FileManager.h"
 #include "EmployeeManager.h"
+#include "ClientManager.h"
+#include "UserManager.h"
+#include <vector>
 
-
-class EmployeeManager;
 
 class CompanyManagementProgram {
 private:
+    std::vector<Employee*>& employees;
+    std::vector<Client*>& clients;
     EmployeeManager employeeManager;
-    std::vector<Employee*> employees;
-    std::vector<Client> clients;
-    Bin bin;
-    FileManager fileManager;
-    std::unordered_map<std::string,std::string> users{{"admin","admin"}, {"user", "user"}};
-    bool isLoggedIn = false;
+    ClientManager clientManager;
 
-    void displayLoginScreen();
-    bool login(const std::string& username, const std::string& password);
+    void adminMenu();
+    void userMenu();
+    void displayEmployees();
+    void displayClients();
 
 public:
-    CompanyManagementProgram();
-    CompanyManagementProgram(std::vector<Employee*>& employees);
+    CompanyManagementProgram(std::vector<Employee*>& employees, std::vector<Client*>& clients);
+    ~CompanyManagementProgram();
 
-    void run();
-    void mainMenu();
-
-    void employeesMenu();
-    void addEmployee();
-    void removeEmployee();
-    void updateEmployeeDetails();
-    void displayEmployees();
-    void displayEmployeeDetails(const Employee* employee);
-    void sortEmployees();
-
-    void clientsMenu();
-    void addClient();
-    void removeClient();
-    void updateClientDetails();
-    void displayClients();
-    void displayClientsDetails();
-    void sortClients();
-
-    void saveData();
+    void run();  // Uruchomienie programu
 };
 
+#endif
 
-#endif //PROJEKTPROGRAMOWANIE_WSTI_COMPANYMANAGEMENTPROGRAM_H
+
 

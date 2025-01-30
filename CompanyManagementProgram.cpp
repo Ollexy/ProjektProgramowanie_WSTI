@@ -1,338 +1,211 @@
-//
-// Created by rolek on 30.10.2023.
-//
-
 #include "CompanyManagementProgram.h"
+#include <iostream>
 
-CompanyManagementProgram::CompanyManagementProgram()
-    :employeeManager(), employees(){}
+CompanyManagementProgram::CompanyManagementProgram(std::vector<Employee*>& employees, std::vector<Client*>& clients)
+        : employees(employees), clients(clients) {}
 
-CompanyManagementProgram::CompanyManagementProgram(std::vector<Employee *> &employees)
-        :employeeManager(), employees(employees){}
-
-void CompanyManagementProgram::displayLoginScreen() {
-    std::string username, password;
-
-    std::cout << "          WELCOME TO XYZ COMPANY\n\n";
-
-    std::cout << "            username:";
-    std::cin >> username;
-
-    std::cout << "            password:";
-    std::cin >> password;
-
-    std::cout << std::endl;
-
-    if(login(username, password)){
-        std::cout << "      Login succesfull!\n";
-        isLoggedIn = true;
-        Sleep(2000);
-        system("cls");
+CompanyManagementProgram::~CompanyManagementProgram() {
+    for (Employee* emp : employees) {
+        delete emp;
     }
-}
-
-bool CompanyManagementProgram::login(const std::string &username, const std::string &password) {
-    auto userIt = users.find(username);
-
-    if(userIt != users.end()){
-        return userIt->second == password;
+    for (Client* cli : clients) {
+        delete cli;
     }
-
-    return false;
 }
 
 void CompanyManagementProgram::run() {
-    std::string filename = "employees.txt";
+    UserManager userManager;
 
-    fileManager.ensureFileExists(filename);
+    std::string username, password;
+    int attempts = 0;
 
-    std::vector<Employee *> loadedEmployees = fileManager.loadEmployeesFromFile("employees.txt");
-    employeeManager.addEmployeesFromFile(loadedEmployees);
+    while (attempts < 3) {
+        std::cout << "LOGIN: ";
+        std::cin >> username;
+        std::cout << "PASSWORD: ";
+        std::cin >> password;
 
-    while (true) {
-        if (!isLoggedIn) {
-            displayLoginScreen();
+        if (userManager.authenticate(username, password)) {
+            User* user = userManager.getUserByUsername(username);
+
+            system("cls");
+            std::cout << "\nLogin successful!\n" << std::endl;
+            std::string role = userManager.getRole(username);
+
+            if (role == "admin") {
+                std::cout << "Welcome, Admin!\n" << std::endl;
+                adminMenu();
+            } else if (role == "user") {
+                std::cout << "\nWelcome, User!\n" << std::endl;
+                userMenu();
+            }
+
+            break;  // Zakończ pętlę po zalogowaniu
         } else {
-            employees = fileManager.loadEmployeesFromFile("employees.txt");
-            mainMenu();
+            attempts++;
+            std::cout << "Invalid login or password. Try again." << std::endl;
         }
+    }
+
+    if (attempts == 3) {
+        std::cout << "Too many failed login attempts. Exiting program." << std::endl;
     }
 }
 
-void CompanyManagementProgram::mainMenu() {
-    system("cls");
-    char choice;
-
+void CompanyManagementProgram::adminMenu() {
+    int choice;
     do {
-        std::cout << "----  MAIN MENU  ----" << std::endl << std::endl;
-        std::cout << "1. Employee Menu" << std::endl;
-        std::cout << "2. Client Menu" << std::endl;
-        std::cout << "0. EXIT" << std::endl << std::endl;
-
+        std::cout << "\n=== Admin Menu ===\n";
+        std::cout << "1. Add Employee\n";
+        std::cout << "2. Remove Employee\n";
+        std::cout << "3. View Employees\n";
+        std::cout << "4. Sort Employees (Ascending)\n";
+        std::cout << "5. Sort Employees (Descending)\n";
+        std::cout << "6. Add Client\n";
+        std::cout << "7. Remove Client\n";
+        std::cout << "8. View Clients\n";
+        std::cout << "9. Exit\n\n";
+        std::cout << "-> ";
         std::cin >> choice;
 
         switch (choice) {
-            case '1':
-                employeesMenu();
+            case 1: {
+                system("cls");
+                std::string fName, lName, position;
+                int age;
+                double salary;
+                std::cout << "Enter first name: ";
+                std::cin >> fName;
+                std::cout << "Enter last name: ";
+                std::cin >> lName;
+                std::cout << "Enter age: ";
+                std::cin >> age;
+                std::cout << "Enter position: ";
+                std::cin >> position;
+                std::cout << "Enter salary: ";
+                std::cin >> salary;
+
+                employeeManager.addEmployee(fName, lName, age, position, salary);
+                std::cout << "Employee added successfully!\n";
+                Sleep(500);
+                system("cls");
                 break;
-            case '2':
-                clientsMenu();
+            }
+            case 2: {
+                system("cls");
+                std::string lastName;
+                std::cout << "Enter the last name of the employee to remove: ";
+                std::cin >> lastName;
+                Employee* emp = employeeManager.findEmployeeByLastName(lastName);
+                if (emp) {
+                    employeeManager.removeEmployee(emp);
+                    std::cout << "Employee removed.\n";
+                } else {
+                    std::cout << "Employee not found.\n";
+                }
                 break;
-            case '0':
-                std::cout << "See you later!";
-                Sleep(3000);
-                exit(0);
-            default:
-                std::cout << "Invalid choice. Please try again." << std::endl;
-        }
-    } while (choice != '1' && choice != '2' && choice != '0');
-}
-
-void CompanyManagementProgram::employeesMenu() {
-    system("cls");
-    char choice;
-
-    do{
-        std::cout << "\n----  EMPLOYEE MENU  ----" << std::endl << std::endl;
-        std::cout << "1. Display employees" << std::endl;
-        std::cout << "2. Add employee" << std::endl;
-        std::cout << "3. Remove employee" << std::endl;
-        std::cout << "4. Update employee information" << std::endl;
-        std::cout << "5. Sort employees" << std::endl;
-        std::cout << "0. Back to Main Menu" << std::endl;
-
-        std::cin >> choice;
-        switch (choice) {
-            case '1':
+            }
+            case 3:
+                system("cls");
                 displayEmployees();
                 break;
-            case '2':
-                addEmployee();
+            case 4:
+                system("cls");
+                employeeManager.sortAscending();
+                std::cout << "Employees sorted in ascending order.\n";
                 break;
-            case '3':
-                removeEmployee();
+            case 5:
+                system("cls");
+                employeeManager.sortDescending();
+                std::cout << "Employees sorted in descending order.\n";
                 break;
-            case '4':
-                updateEmployeeDetails();
+            case 6: {
+                system("cls");
+                std::string fName, lName, email, phone;
+                std::cout << "Enter first name: ";
+                std::cin >> fName;
+                std::cout << "Enter last name: ";
+                std::cin >> lName;
+                std::cout << "Enter email: ";
+                std::cin >> email;
+                std::cout << "Enter phone: ";
+                std::cin >> phone;
+
+                clientManager.addClient(fName, lName, email, phone);
+                std::cout << "Client added successfully!\n";
                 break;
-            case '5':
-                sortEmployees();
+            }
+            case 7: {
+                system("cls");
+                std::string lastName;
+                std::cout << "Enter the last name of the client to remove: ";
+                std::cin >> lastName;
+                Client* cli = clientManager.findClientByLastName(lastName);
+                if (cli) {
+                    clientManager.removeClient(cli);
+                    std::cout << "Client removed.\n";
+                } else {
+                    std::cout << "Client not found.\n";
+                }
                 break;
-            case '0':
-                mainMenu();
+            }
+            case 8:
+                system("cls");
+                displayClients();
+                break;
+            case 9:
+                system("cls");
+                std::cout << "Exiting program...\n";
                 break;
             default:
-                std::cout << "Invalid choice. Please try again." << std::endl;
+                std::cout << "Invalid choice! Please try again.\n";
         }
-    }while(choice != '1' && choice != '2' && choice != '3' && choice != '4' && choice != '5');
+    } while (choice != 9);
 }
 
-void CompanyManagementProgram::clientsMenu() {
-    char choice;
-
+void CompanyManagementProgram::userMenu() {
+    int choice;
     do {
-        std::cout << "----  CLIENT MENU  ----" << std::endl;
-        std::cout << "1. Display Clients" << std::endl;
-        std::cout << "2. Add Client" << std::endl;
-        std::cout << "3. Remove Client" << std::endl;
-        std::cout << "4. Back to Main Menu" << std::endl;
-
+        std::cout << "\n=== User Menu ===\n";
+        std::cout << "1. View Employees\n";
+        std::cout << "2. View Clients\n";
+        std::cout << "3. Exit\n";
+        std::cout << "Enter your choice: ";
         std::cin >> choice;
+
         switch (choice) {
-            case '1':
-                // TODO
+            case 1:
+                displayEmployees();
                 break;
-            case '2':
-                // TODO
+            case 2:
+                displayClients();
                 break;
-            case '3':
-                // TODO
-                break;
-            case '4':
-                mainMenu();
+            case 3:
+                std::cout << "Exiting program...\n";
                 break;
             default:
-                std::cout << "Invalid choice. Please try again." << std::endl;
+                std::cout << "Invalid choice! Please try again.\n";
         }
-    }while(choice != '1' && choice != '2' && choice != '3' && choice != '4');
-}
-
-void CompanyManagementProgram::addEmployee() {
-    std::string fName, lName, position;
-    int age;
-    double salary;
-
-    std::cout << "Enter first name: ";
-    std::cin >> fName;
-
-    std::cout << "Enter last name: ";
-    std::cin.ignore(); // ignor new line sign from previous cin
-    std::getline(std::cin, lName);
-
-    std::cout << "Enter age: ";
-    std::cin >> age;
-
-    std::cout << "Enter position: ";
-    std::cin.ignore();
-    std::getline(std::cin, position);
-
-    std::cout << "Enter salary: ";
-    std::cin.ignore();
-    std::cin >> salary;
-
-    employeeManager.addEmployee(fName, lName, age, position, salary);
-
-    std::cout << "\n----------------------------" << std::endl;
-    std::cout << "Adding new employee";
-    Sleep(500);
-    std::cout << ".";
-    Sleep(500);
-    std::cout << ".";
-    Sleep(500);
-    std::cout << "." << std::endl;
-    Sleep(500);
-
-    if (employeeManager.getEmployees().empty()) {
-        std::cout << "SOMETHING IS NOT WORKING. I COULDN'T ADD NEW EMPLOYEE" << std::endl;
-    } else {
-        std::cout << "Employee added successfully!" << std::endl << std::endl;
-        std::cout << "Press any key to continue";
-        system("pause");
-    }
-    saveData(); //adding employee to file automaticly
-}
-
-void CompanyManagementProgram::removeEmployee() {
-    displayEmployees();
-
-    int choice;
-    std::cout << "Enter the number of the employee to remove (0 to cancel): ";
-    std::cin >> choice;
-
-    if (choice >= 1 && static_cast<size_t>(choice) <= employeeManager.getEmployees().size()) {
-        const auto& selectedEmployee = employeeManager.getEmployees()[choice - 1];
-
-        displayEmployeeDetails(selectedEmployee);
-
-        char confirmation;
-        std::cout << "Do you really want to remove this employee? (y/n): ";
-        std::cin >> confirmation;
-
-        if (confirmation == std::toupper('y')) {
-            employeeManager.removeEmployee(selectedEmployee);
-
-            std::cout << "Employee removed successfully!" << std::endl;
-
-            saveData();
-        } else {
-            std::cout << "Employee removal canceled." << std::endl;
-        }
-    } else if (choice != 0) {
-        std::cout << "Invalid choice. Please try again." << std::endl;
-    }
-}
-
-void CompanyManagementProgram::updateEmployeeDetails() {
-    std::cout << "----  UPDATE EMPLOYEE DETAILS  ----" << std::endl;
-
-    displayEmployees();
-
-    std::cout << "Enter the number of the employee to update details (0 to go back): ";
-    int choice;
-    std::cin >> choice;
-
-    if (choice >= 1 && static_cast<size_t>(choice) <= employeeManager.getEmployees().size()) {
-        const auto& selectedEmployee = employeeManager.getEmployees()[choice - 1];
-
-        employeeManager.updateEmployeeDetails(selectedEmployee);
-    } else if (choice != 0) {
-        std::cout << "Invalid choice. Please try again." << std::endl;
-    }
+    } while (choice != 3);
 }
 
 void CompanyManagementProgram::displayEmployees() {
-    system("cls");
-
-    const auto &employeesList = employeeManager.getEmployees();
-
-    if (employeesList.empty()) {
-        std::cout << "There are no employees! Returning to the employee menu." << std::endl;
-        return; // return to employee menu
-    }
-
-
-    std::cout << "----  EMPLOYEE LIST  ----" << std::endl << std::endl;
-
-    for (size_t i = 0; i < employeesList.size(); ++i) {
-        const auto &employee = employeesList[i];
-        std::cout << i + 1 << ". " << employee->getFirstName() << " " << employee->getLastName()
-                  << ", Position: " << employee->getPosition() << std::endl;
-    }
-
-    std::cout << std::endl << "-------------------------" << std::endl << std::endl;
-
-    std::cout << std::endl << "Enter the number of the employee to view details (0 to go back): ";
-    int choice;
-    std::cin >> choice;
-
-    if (choice >= 1 && static_cast<size_t>(choice) <= employeesList.size()) {
-        system("cls");
-
-        const auto &selectedEmployee = employeesList[choice - 1];
-        displayEmployeeDetails(selectedEmployee);
-
-        system("pause");
-    } else if (choice != 0) {
-        std::cout << "Invalid choice. Please try again." << std::endl;
+    std::cout << "\n=== Employees List ===\n";
+    const std::vector<Employee*>& employees = employeeManager.getEmployees();
+    for (const Employee* emp : employees) {
+        std::cout << emp->getFirstName() << " " << emp->getLastName()
+                  << ", Age: " << emp->getAge()
+                  << ", Position: " << emp->getPosition()
+                  << ", Salary: " << emp->getSalary() << "\n";
     }
 }
 
-void CompanyManagementProgram::displayEmployeeDetails(const Employee *employee) {
-    std::cout << "----  EMPLOYEE DETAILS  ----" << std::endl;
-    std::cout << "Name: " << employee->getFirstName() << " " << employee->getLastName() << std::endl;
-    std::cout << "Age: " << employee->getAge() << std::endl;
-    std::cout << "Position: " << employee->getPosition() << std::endl;
-    std::cout << "Salary: " << employee->getSalary() << std::endl << std::endl;
-}
-
-void CompanyManagementProgram::saveData() {
-    std::string filename = "employees.txt";
-
-    for (const auto &employee : employeeManager.getEmployees()) {
-        fileManager.saveEmployeeToFile(employee, filename);
+void CompanyManagementProgram::displayClients() {
+    std::cout << "\n=== Clients List ===\n";
+    const std::vector<Client*>& clients = clientManager.getClients();
+    for (const Client* cli : clients) {
+        std::cout << cli->getFirstName() << " " << cli->getLastName()
+                  << ", Email: " << cli->getEmail()
+                  << ", Phone: " << cli->getPhone() << "\n";
     }
-
-    std::cout << "Employee data saved successfully." << std::endl;
 }
-
-void CompanyManagementProgram::sortEmployees() {
-    char choice;
-
-    do {
-        std::cout << "----  SORT EMPLOYEES MENU  ----" << std::endl << std::endl;
-        std::cout << "1. Sort Alphabetically" << std::endl;
-        std::cout << "2. Sort Reverse Alphabetically" << std::endl;
-        std::cout << "0. Back to Employee Menu" << std::endl;
-
-        std::cin >> choice;
-
-        switch (choice) {
-            case '1':
-                employeeManager.sortAscending();
-                std::cout << "Employees sorted alphabetically." << std::endl;
-                break;
-            case '2':
-                employeeManager.sortDescending();
-                std::cout << "Employees sorted in reverse alphabetical order." << std::endl;
-                break;
-            case '0':
-                employeesMenu();
-                break;
-            default:
-                std::cout << "Invalid choice. Please try again." << std::endl;
-        }
-    } while (choice != '1' && choice != '2' && choice != '0');
-}
-
-
-

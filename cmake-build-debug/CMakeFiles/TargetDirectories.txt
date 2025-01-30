@@ -1,3 +1,3 @@
-C:/Users/rolek/CLionProjects/ProjektProgramowanie_WSTI/cmake-build-debug/CMakeFiles/ProjektProgramowanie_WSTI.dir
-C:/Users/rolek/CLionProjects/ProjektProgramowanie_WSTI/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/rolek/CLionProjects/ProjektProgramowanie_WSTI/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/rolek/CLionProjects/ProjektProgramowanieWSTI/cmake-build-debug/CMakeFiles/ProjektProgramowanie_WSTI.dir
+C:/Users/rolek/CLionProjects/ProjektProgramowanieWSTI/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/rolek/CLionProjects/ProjektProgramowanieWSTI/cmake-build-debug/CMakeFiles/rebuild_cache.dir

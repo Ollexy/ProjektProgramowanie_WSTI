@@ -5,19 +5,30 @@
 #ifndef PROJEKTPROGRAMOWANIE_WSTI_CLIENT_H
 #define PROJEKTPROGRAMOWANIE_WSTI_CLIENT_H
 
-#include <iostream>
 #include "Person.h"
+#include <string>
 
 class Client : public Person {
 private:
-    int id;
     std::string email;
+    std::string phone;
 
 public:
-    Client(std::string fName, std::string lName, int xAge, int xId, std::string xEmail);
+    // Konstruktory
+    Client(const std::string& fName, const std::string& lName,
+           const std::string& email, const std::string& phone);
 
-    void displayInfo() const override;
+    // Gettery
+    std::string getEmail() const;
+    std::string getPhone() const;
+
+    // Settery
+    void setEmail(const std::string& newEmail);
+    void setPhone(const std::string& newPhone);
+
+    void displayClientInfo() const;
 };
 
+#endif
 
-#endif //PROJEKTPROGRAMOWANIE_WSTI_CLIENT_H
+

@@ -17,4 +17,8 @@ add_executable(ProjektProgramowanie_WSTI main.cpp
         FileManager.cpp
         FileManager.h
         EmployeeManager.cpp
-        EmployeeManager.h)
+        EmployeeManager.h
+        ClientManager.cpp
+        User.h
+        User.cpp
+        UserManager.cpp)

@@ -1,15 +1,31 @@
-//
-// Created by rolek on 30.10.2023.
-//
-
 #include "Client.h"
+#include <iostream>
 
-Client::Client(std::string firstName, std::string lastName, int age, int id, std::string email)
-    :Person(firstName, lastName, age), id(id), email(email){}
+// Konstruktory
+Client::Client(const std::string& fName, const std::string& lName,
+               const std::string& email, const std::string& phone)
+        : Person(fName, lName), email(email), phone(phone) {}
 
-void Client::displayInfo() const {
-    std::cout << "Client: " << firstName << " " << lastName << std:: endl;
-    std::cout << "Age: " << age << std::endl;
-    std::cout << "ID: " << id << std::endl;
-    std::cout << "E-mail: " << email << std::endl << std::endl << std::endl;
+// Gettery
+std::string Client::getEmail() const {
+    return email;
+}
+
+std::string Client::getPhone() const {
+    return phone;
+}
+
+// Settery
+void Client::setEmail(const std::string& newEmail) {
+    email = newEmail;
+}
+
+void Client::setPhone(const std::string& newPhone) {
+    phone = newPhone;
+}
+
+void Client::displayClientInfo() const {
+    std::cout << "Client: " << getFirstName() << " " << getLastName()
+              << ", Email: " << email
+              << ", Phone: " << phone << std::endl;
 }

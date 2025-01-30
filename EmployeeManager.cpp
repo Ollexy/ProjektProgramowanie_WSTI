@@ -1,25 +1,27 @@
-//
-// Created by rolek on 14.11.2023.
-//
-
 #include "EmployeeManager.h"
 
 EmployeeManager::~EmployeeManager() {
-    for(Employee* e: employeesList){
+    for (Employee* e : employeesList) {
         delete e;
     }
 }
 
-void EmployeeManager::addEmployee(const std::string &fName, const std::string &lName, int age, const std::string &position,
-                             double salary) {
-
-    Employee *newEmployee = new Employee(fName, lName, age, position, salary);
+void EmployeeManager::addEmployee(const std::string &fName, const std::string &lName, int age, const std::string &position, double salary) {
+    Employee* newEmployee = new Employee(fName, lName, age, position, salary);
+    std::cout << "\n----------------------------" << std::endl;
+    std::cout << "Adding new employee";
+    Sleep(500);
+    std::cout << ".";
+    Sleep(500);
+    std::cout << ".";
+    Sleep(500);
+    std::cout << "." << std::endl;
+    Sleep(500);
     employeesList.push_back(newEmployee);
 }
 
-void EmployeeManager::removeEmployee(Employee *emp) {
+void EmployeeManager::removeEmployee(Employee* emp) {
     auto it = std::find(employeesList.begin(), employeesList.end(), emp);
-
     if (it != employeesList.end()) {
         delete *it;
         employeesList.erase(it);
@@ -39,12 +41,12 @@ void EmployeeManager::updateEmployeeDetails(const Employee* selectedEmployee) {
 
     std::string newValue;
     std::cout << "Enter the new value: ";
-    std::cin.ignore(); // Ignore newLine from previous cin
+    std::cin.ignore();
     std::getline(std::cin, newValue);
 
     updateEmployee(selectedEmployee, fieldChoice, newValue);
 
-    std::cout << "Employee details updated successfully!" << std::endl << std::endl;
+    std::cout << "Employee details updated successfully!" << std::endl;
 }
 
 void EmployeeManager::updateEmployee(const Employee* emp, int fieldChoice, const std::string& newValue) {
@@ -70,20 +72,32 @@ void EmployeeManager::updateEmployee(const Employee* emp, int fieldChoice, const
     }
 }
 
-const std::vector<Employee *> &EmployeeManager::getEmployees() const {
+const std::vector<Employee*>& EmployeeManager::getEmployees() const {
     return employeesList;
 }
 
-void EmployeeManager::addEmployeesFromFile(const std::vector<Employee *> &employees) {
+void EmployeeManager::addEmployeesFromFile(const std::vector<Employee*>& employees) {
     employeesList = employees;
 }
 
 void EmployeeManager::sortAscending() {
     std::sort(employeesList.begin(), employeesList.end(), [](const Employee* a, const Employee* b) {
-        return a->getLastName() < b->getLastName();});
+        return a->getLastName() < b->getLastName();
+    });
 }
 
 void EmployeeManager::sortDescending() {
     std::sort(employeesList.begin(), employeesList.end(), [](const Employee* a, const Employee* b) {
-        return a->getLastName() > b->getLastName();});
+        return a->getLastName() > b->getLastName();
+    });
+}
+
+// Nowa metoda do wyszukiwania pracownika po nazwisku
+Employee* EmployeeManager::findEmployeeByLastName(const std::string& lastName) {
+    for (Employee* emp : employeesList) {
+        if (emp->getLastName() == lastName) {
+            return emp;
+        }
+    }
+    return nullptr;
 }
